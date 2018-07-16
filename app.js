@@ -9,7 +9,7 @@ router.use(function (req,res,next) {
 });
 
 router.get("/",function(req,res){
-  res.sendFile(path + "index.html");
+  res.sendFile(path + "selectuser.html");
 });
 
 router.get("/userslogin",function(req,res){
@@ -27,5 +27,5 @@ app.use("*",function(req,res){
 });
 
 app.listen(3000,function(){
-  console.log("Live at Port 3000");
+  console.log("Listening at port 3000");
 });
