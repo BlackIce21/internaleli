@@ -3,17 +3,22 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+.navbar-nav .navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+</style>
 </head>
 <body>
   <div>
   <div>
-  <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
-         <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About us</a></li>
-        <li class="active"><a href="/contact">Contact us<span class="sr-only">(current)</span></a></li>
-      </ul>
-</nav>
+    <div class="container">
+    <nav class="navbar navbar-nav navbar-center navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+    </nav>
+  </div>
 </div>
   <br/>
   <form class="form-horizontal" role="form" style="width: 50%;">

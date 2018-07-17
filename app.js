@@ -26,9 +26,8 @@ app.use("*",function(req,res){
   res.sendFile(path + "404.html");
 });
 
-app.post('/userslogin', function (req, res, next) {
-  console.log("to users page");
-  res.sendFile(path + "userreg.html");
+app.use("/register", function(req, res){
+  res.sendFile(path + "register.html");
 });
 
 app.listen(3000,function(){
