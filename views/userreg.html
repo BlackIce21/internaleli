@@ -1,29 +1,32 @@
 <html>
+
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<style type="text/css">
-.navbar-nav .navbar-center {
-    position: absolute;
-    left: 50%;
-    transform: translatex(-50%);
-}
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    .navbar-nav .navbar-center {
+      position: absolute;
+      left: 50%;
+      transform: translatex(-50%);
+    }
 
-.navbar-brand{
-  margin-left: 250px;
-}
+    .navbar-brand {
+      margin-left: 250px;
+    }
 
-.navbar{
-  box-shadow: 0 5px 6px -6px #999;
-}
+    .navbar {
+      box-shadow: 0 5px 6px -6px #999;
+    }
 
-ul {
-  margin-left: -10px;
-  padding: 0;
-}
-</style>
+    ul {
+      margin-left: -10px;
+      padding: 0;
+    }
+  </style>
 </head>
+
 <body>
   <div>
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -38,53 +41,145 @@ ul {
         <span class="navbar-toggler-icon"></span>
       </button>
     </nav>
-  <br/>
-  <div class="container">
-  <div class="col-sm-10">
-  <form class="form-horizontal justify-content-center" role="form" style="width: 50%;margin-left: 100px;">
-    <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">Name</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" value="">
+    <br/>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <form class="form-horizontal justify-content-center" role="form" style="width: 100%; margin-left:100px;">
+            <div class="form-group">
+              <label for="name" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" name="email" placeholder="example@cloudthat.in" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-4 control-label">Job title</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" name="title" placeholder="eg; Research Associate" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="" class="col-sm-4 control-label">Experience</label>
+              <div class="form-inline">
+                <div class="col-sm-7 form-inline">
+                  <select class="form-control col-sm-7 my-1" id="years">
+                  <option>0</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+                  <label for="years" class="col-sm-3 control-label">year(s)</label>
+                </div>
+                <div class="col-sm-7 form-inline">
+                  <select class="form-control col-sm-7 my-1" id="months">
+                  <option>0</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+                  <label for="months" class="col-sm-4 control-label">month(s)</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="degree" class="col-sm-10 control-label">Certifications completed</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="placeholderid" name="certs" placeholder="eg; Azure 70-532">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="college" class="col-sm-10 control-label">College</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="placeholderid" name="college" placeholder="College name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="home" class="col-sm-10 control-label">Hometown</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="placeholderid" name="home" placeholder="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="manager" class="col-sm-10 control-label">Manager</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="placeholderid" name="manager" placeholder="">
+              </div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="email" class="col-sm-2 control-label">Email</label>
-        <div class="col-sm-10">
-            <input type="email" class="form-control" id="email" name="email" placeholder="example@cloudthat.in" value="">
+        <div class="col-lg-5">
+          <form class="form-horizontal justify-content-center" role="form" style="width: 100%; margin-right:100px;">
+            <div class="form-group">
+              <label for="name" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" name="email" placeholder="example@cloudthat.in" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-4 control-label">Job title</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" name="title" placeholder="eg; Research Associate" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="" class="col-sm-4 control-label">Experience</label>
+              <div class="form-inline">
+                <div class="col-sm-7 form-inline">
+                  <select class="form-control col-sm-7 my-1" id="years">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                  <label for="years" class="col-sm-3 control-label">year(s)</label>
+                </div>
+                <div class="col-sm-7 form-inline">
+                  <select class="form-control col-sm-7 my-1" id="months">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                  <label for="months" class="col-sm-4 control-label">month(s)</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="degree" class="col-sm-10 control-label">Certifications completed</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="placeholderid" name="certs" placeholder="eg; Azure 70-532">
+              </div>
+            </div>
         </div>
+      </div>
     </div>
-    <div class="form-group">
-        <label for="email" class="col-sm-4 control-label">Job title</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="email" name="title" placeholder="eg; Research Associate" value="">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="email" class="col-sm-4 control-label">Experience</label>
-        <div class="col-sm-10">
-            <input type="email" class="form-control" id="email" name="email" placeholder="" value="">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="degree" class="col-sm-8 control-label">Certifcations completed</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="human" name="human" placeholder="eg; Azure, AWS">
-        </div>
-    </div>
-    <div class="form-group">
+    <div class="row justify-content-center">
+      <div class="form-group">
         <div class="col-sm-10 col-sm-offset-2 text-center">
-            <input id="submit" name="submit" type="submit" value="Submit" class="btn btn-primary">
+          <input id="submit" name="submit" type="submit" value="Submit" class="btn btn-primary">
         </div>
+      </div>
     </div>
-    <div class="form-group">
-        <div class="col-sm-10 col-sm-offset-2">
-        </div>
-    </div>
-</form>
-</div>
-</div>
-</div>
+    </form>
+
+  </div>
+  </div>
   </div>
 </body>
+
 </html>
