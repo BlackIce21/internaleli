@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <style type="text/css">
     .navbar-nav .navbar-center {
       position: absolute;
@@ -25,6 +24,8 @@
       padding: 0;
     }
   </style>
+  <script>
+  </script>
 </head>
 
 <body>
@@ -43,10 +44,10 @@
     </nav>
     <br/>
     <div class="container">
-      <form class="" role="form" style="width: 100%; margin-left:100px;">
-      <div class="row">
-        <div class="col-lg-5">
-          <!-- <form class="form-horizontal justify-content-center" role="form" style="width: 100%; margin-left:100px;"> -->
+      <form method="post" action="/register" class="" role="form" style="width: 100%;">
+        <div class="row">
+          <div class="col-lg-5">
+            <!-- <form class="form-horizontal justify-content-center" role="form" style="width: 100%; margin-left:100px;"> -->
             <div class="form-group">
               <label for="name" class="col-sm-2 control-label">Name</label>
               <div class="col-sm-10">
@@ -60,7 +61,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="email" class="col-sm-4 control-label">Job title</label>
+              <label for="jobtitle" class="col-sm-4 control-label">Job title</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" id="email" name="title" placeholder="eg; Research Associate" value="">
               </div>
@@ -69,7 +70,7 @@
               <label for="" class="col-sm-4 control-label">Experience</label>
               <div class="form-inline">
                 <div class="col-sm-7 form-inline">
-                  <select class="form-control col-sm-7 my-1" id="years">
+                  <select name="expy" class="form-control col-sm-7 my-1" id="years">
                   <option>0</option>
                   <option>1</option>
                   <option>2</option>
@@ -79,7 +80,7 @@
                   <label for="years" class="col-sm-3 control-label">year(s)</label>
                 </div>
                 <div class="col-sm-7 form-inline">
-                  <select class="form-control col-sm-7 my-1" id="months">
+                  <select name="" class="form-control col-sm-7 my-1" id="months">
                   <option>0</option>
                   <option>1</option>
                   <option>2</option>
@@ -114,9 +115,9 @@
                 <input type="text" class="form-control" id="placeholderid" name="manager" placeholder="">
               </div>
             </div>
-        </div>
-        <div class="col-lg-5">
-          <!-- <form class="form-horizontal justify-content-center" role="form" style="width: 100%;"> -->
+          </div>
+          <div class="col-lg-5 col-lg-push-5">
+            <!-- <form class="form-horizontal justify-content-center" role="form" style="width: 100%;"> -->
             <div class="form-group">
               <label for="intproj" class="col-sm-6 control-label">Internal projects</label>
               <div class="col-sm-10">
@@ -131,26 +132,27 @@
             </div>
             <div class="form-group">
               <label for="skills" class="col-sm-10 control-label">Skills</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="placeholderid" name="skills" placeholder="">
+              <div class="col-sm-10 selectskills">
+                <!-- <input type="text" class="form-control" id="skillsinput" name="skills" placeholder=""> -->
+                <select name="skills" multiple>
+                  <option>Java</option>
+                  <option>JavaScript</option>
+                  <option>C</option>
+                </select>
               </div>
             </div>
+          </div>
         </div>
-      </div>
-      </form>
-    </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="width:100%">
       <div class="form-group">
         <div class="col-sm-10 col-sm-offset-2 text-center">
           <input id="submit" name="submit" type="submit" value="Submit" class="btn btn-primary">
         </div>
       </div>
     </div>
-    </form>
-
+  </form>
   </div>
   </div>
   </div>
 </body>
-
 </html>
