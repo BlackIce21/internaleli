@@ -1,5 +1,4 @@
 <html>
-
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
@@ -80,7 +79,7 @@
                   <label for="years" class="col-sm-3 control-label">year(s)</label>
                 </div>
                 <div class="col-sm-7 form-inline">
-                  <select name="" class="form-control col-sm-7 my-1" id="months">
+                  <select name="expm" class="form-control col-sm-7 my-1" id="months">
                   <option>0</option>
                   <option>1</option>
                   <option>2</option>
@@ -92,7 +91,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="degree" class="col-sm-10 control-label">Certifications completed</label>
+              <label for="certs" class="col-sm-10 control-label">Certifications completed</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" id="placeholderid" name="certs" placeholder="eg; Azure 70-532">
               </div>
@@ -141,18 +140,38 @@
                 </select>
               </div>
             </div>
+            <div class="form-group">
+              <label for="customFile" class="col-sm-6 control-label">Resume</label>
+              <div class="col-sm-10" style="margin-left:14px;">
+                  <input type="file" class="custom-file-input" id="customFile" name="customFile">
+                  <label class="custom-file-label" for="customFile">Choose file</label>
+              </div>
+            </div>
           </div>
         </div>
-    <div class="row justify-content-center" style="width:100%">
-      <div class="form-group">
-        <div class="col-sm-10 col-sm-offset-2 text-center">
-          <input id="submit" name="submit" type="submit" value="Submit" class="btn btn-primary">
+        <div class="row justify-content-center" style="width:100%">
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2 text-center">
+              <input id="submit" name="submit" type="submit" value="Submit" class="btn btn-primary">
+            </div>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
-  </form>
-  </div>
   </div>
   </div>
 </body>
+<script type="text/javascript">
+$("input[type=file]").change(function () {
+  var fieldVal = $(this).val();
+
+  // Change the node's value by removing the fake path (Chrome)
+  fieldVal = fieldVal.replace("C:\\fakepath\\", "");
+
+  if (fieldVal != undefined || fieldVal != "") {
+    $(this).next(".custom-file-label").attr('data-content', fieldVal);
+    $(this).next(".custom-file-label").text(fieldVal);
+  }
+});
+</script>
 </html>
