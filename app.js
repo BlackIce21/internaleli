@@ -62,6 +62,7 @@ function insertrow(data) {
       }
     });
   });
+
   connection.execSql(request);
 }
 
