@@ -2,6 +2,8 @@ var express = require("express");
 var app = express();
 var router = express.Router();
 var path = __dirname + '/views/';
+var azure = require('azure-storage');
+var multer = require('multer');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
@@ -9,6 +11,36 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json());
 
+// File upload multer
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'uploads/resumes')
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+var upload = multer({storage: storage});
+
+// Azure storage
+const blobService = azure.createBlobService(DefaultEndpointsProtocol=https;AccountName=internaleliapp;AccountKey=VLy1Oj9hFNCpIP6U36LI7OKFEFCad5v5bBJeEETpowCLO4x1jj/lhxEUXkWy72951GlkSIHwUJVyNtSWVhw8sQ==;EndpointSuffix=core.windows.net);
+const container = 'resumecontainer';
+const task = 'resblob';
+const filename = '';
+
+function uploadRes(filename){
+  blobService.createBlockBlobFromLocalFile(
+    container,
+    task,
+    filename,
+    (error, result) => {
+      if (error) return console.log(error);
+      console.dir(result, { depth: null, colors: true });
+    }
+  );
+}
+
+// Azure DB
 var Request = require('tedious').Request;
 var TYPES = require('tedious').TYPES;
 var Connection = require('tedious').Connection;
@@ -88,7 +120,7 @@ router.get("/register", function(req, res) {
 
 app.use("/", router);
 
-app.post('/register', function(req, res) {
+app.post('/register', upload.single('customFile'), function(req, res) {
   const email = req.body.email;
   const name = req.body.name;
   const title = req.body.title;
@@ -100,6 +132,7 @@ app.post('/register', function(req, res) {
   const extproj = req.body.extproj;
   const expy = req.body.expy;
   const expm = req.body.expm;
+  const fileup = req.file;
   const data = {
     email,
     name,
@@ -114,6 +147,7 @@ app.post('/register', function(req, res) {
     expm
   };
   insertrow(data);
+  uploadRes(fileup);
   res.sendFile(path + "register.html");
 });
 

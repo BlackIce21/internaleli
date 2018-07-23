@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "async": "^2.6.1",
+    "azure-storage": "^2.10.0",
     "body-parser": "^1.18.3",
     "bootstrap-select": "^1.13.1",
     "express": "^4.16.3",
