@@ -17,10 +17,9 @@ var Connection = require('tedious').Connection;
 var config = {
   userName: 'ctadmin', // update me
   password: 'ctAdit0721', // update me
-  server: 'eliwebapp.database.windows.net', // update me
+  server: 'eliwebapp21.database.windows.net', // update me
   options: {
-    database: 'eliwebapp' //update me
-      ,
+    database: 'internaleliapp',
     encrypt: true
   }
 }

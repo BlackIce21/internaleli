@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
@@ -23,7 +24,7 @@
       padding: 0;
     }
 
-    form{
+    form {
       margin-top: 30px;
     }
   </style>
@@ -41,7 +42,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">CloudThat Employee Eligiblity Portal</a>
       </ul>
-    <button class="btn btn-sm btn-outline-primary my-2 my-sm-0" type="button" style="margin-left:340px;">Administrator portal</button>
+      <button class="btn btn-sm btn-outline-primary my-2 my-sm-0" type="button" style="margin-left:340px;">Administrator portal</button>
     </nav>
     <br/>
     <div class="container">
@@ -135,18 +136,22 @@
               <label for="skills" class="col-sm-10 control-label">Skills</label>
               <div class="col-sm-10 selectskills">
                 <!-- <input type="text" class="form-control" id="skillsinput" name="skills" placeholder=""> -->
-                <select name="skills" multiple>
-                  <option>Java</option>
-                  <option>JavaScript</option>
-                  <option>C</option>
+                <select class="multi-select-dd" multiple="multiple">
+                     <option value="MySQL" >MySQL</option>
+                     <option value="SQLServer" >SQL Server</option>
+                     <option value="Oracle">Oracle</option>
+                     <option value="HTML" >HTML</option>
+                     <option value="CSS">CSS</option>
+                     <option value="jQuery">jQuery</option>
+                     <option value="Bootstrap">Bootstrap</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label for="customFile" class="col-sm-6 control-label">Resume</label>
               <div class="col-sm-10" style="margin-left:14px;">
-                  <input type="file" class="custom-file-input" id="customFile" name="customFile">
-                  <label class="custom-file-label" for="customFile">Choose file</label>
+                <input type="file" class="custom-file-input" id="customFile" name="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
               </div>
             </div>
           </div>
@@ -164,16 +169,15 @@
   </div>
 </body>
 <script type="text/javascript">
-$("input[type=file]").change(function () {
-  var fieldVal = $(this).val();
-
-  // Change the node's value by removing the fake path (Chrome)
-  fieldVal = fieldVal.replace("C:\\fakepath\\", "");
-
-  if (fieldVal != undefined || fieldVal != "") {
-    $(this).next(".custom-file-label").attr('data-content', fieldVal);
-    $(this).next(".custom-file-label").text(fieldVal);
-  }
-});
+  $("input[type=file]").change(function() {
+    var fieldVal = $(this).val();
+    // Change the node's value by removing the fake path (Chrome)
+    fieldVal = fieldVal.replace("C:\\fakepath\\", "");
+    if (fieldVal != undefined || fieldVal != "") {
+      $(this).next(".custom-file-label").attr('data-content', fieldVal);
+      $(this).next(".custom-file-label").text(fieldVal);
+    }
+  });
 </script>
+
 </html>
