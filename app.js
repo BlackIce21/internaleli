@@ -4,6 +4,9 @@ var router = express.Router();
 var path = __dirname + '/views/';
 var azure = require('azure-storage');
 var multer = require('multer');
+var formidable = require('formidable');
+var multerAzure = require('multer-azure');
+
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
@@ -11,34 +14,16 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json());
 
-// File upload multer
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, 'uploads/resumes')
-    },
-    filename: (req, file, cb) => {
-      cb(null, file.fieldname + '-' + Date.now())
-    }
+//File upload multer
+
+var upload = multer({
+  storage: multerAzure({
+    connectionString: 'DefaultEndpointsProtocol=https;AccountName=internaleliapp;AccountKey=VLy1Oj9hFNCpIP6U36LI7OKFEFCad5v5bBJeEETpowCLO4x1jj/lhxEUXkWy72951GlkSIHwUJVyNtSWVhw8sQ==;EndpointSuffix=core.windows.net', //Connection String for azure storage account, this one is prefered if you specified, fallback to account and key if not.
+    account: '', //The name of the Azure storage account
+    key: '', //A key listed under Access keys in the storage account pane
+    container: 'resblob'  //Any container name, it will be created if it doesn't exist
+  })
 });
-var upload = multer({storage: storage});
-
-// Azure storage
-const blobService = azure.createBlobService(DefaultEndpointsProtocol=https;AccountName=internaleliapp;AccountKey=VLy1Oj9hFNCpIP6U36LI7OKFEFCad5v5bBJeEETpowCLO4x1jj/lhxEUXkWy72951GlkSIHwUJVyNtSWVhw8sQ==;EndpointSuffix=core.windows.net);
-const container = 'resumecontainer';
-const task = 'resblob';
-const filename = '';
-
-function uploadRes(filename){
-  blobService.createBlockBlobFromLocalFile(
-    container,
-    task,
-    filename,
-    (error, result) => {
-      if (error) return console.log(error);
-      console.dir(result, { depth: null, colors: true });
-    }
-  );
-}
 
 // Azure DB
 var Request = require('tedious').Request;
@@ -62,12 +47,12 @@ connection.on('connect', function(err) {
   if (err) {
     console.log(err);
   } else {
-    console.log("conncted");
+    console.log("connected to DB");
   }
 });
 // Inserting into DB
 function insertrow(data) {
-  request = new Request("INSERT INTO dbo.ctusers (Name, Email, Job_title, Exp_year, Exp_month, Certs, College, Hometown, Manager, Int_proj, Ext_proj, Skills) values (@Name, @Email, @Job_title, @Exp_year, @Exp_month, @Certs, @College, @Hometown, @Manager, @Int_proj, @Ext_proj, @Skills)", function(err) {
+  request = new Request("INSERT INTO dbo.ctusers (Name, Email, Job_title, Exp_year, Exp_month, Certs, College, Hometown, Manager, Int_proj, Ext_proj, Skills, Resume_url) values (@Name, @Email, @Job_title, @Exp_year, @Exp_month, @Certs, @College, @Hometown, @Manager, @Int_proj, @Ext_proj, @Skills, @Resume_url)", function(err) {
     if (err) {
       console.log(err);
     }
@@ -84,6 +69,7 @@ function insertrow(data) {
   request.addParameter('Skills', TYPES.NVarChar, data.skills);
   request.addParameter('Exp_year', TYPES.Int, data.expy);
   request.addParameter('Exp_month', TYPES.Int, data.expm);
+  request.addParameter('Resume_url', TYPES.NVarChar, data.fileup);
   request.on('row', function(columns) {
     columns.forEach(function(column) {
       if (column.value === null) {
@@ -132,7 +118,7 @@ app.post('/register', upload.single('customFile'), function(req, res) {
   const extproj = req.body.extproj;
   const expy = req.body.expy;
   const expm = req.body.expm;
-  const fileup = req.file;
+  const fileup = req.file.url;
   const data = {
     email,
     name,
@@ -144,10 +130,12 @@ app.post('/register', upload.single('customFile'), function(req, res) {
     intproj,
     extproj,
     expy,
-    expm
+    expm,
+    fileup
   };
+  console.log(req.body);
+  console.log(fileup);
   insertrow(data);
-  uploadRes(fileup);
   res.sendFile(path + "register.html");
 });
 
