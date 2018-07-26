@@ -7,7 +7,6 @@ var multer = require('multer');
 var formidable = require('formidable');
 var multerAzure = require('multer-azure');
 
-
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
   extended: false
@@ -42,7 +41,8 @@ var config = {
 }
 var connection = new Connection(config);
 
-// Attempt to connect and execute queries if connection goes through
+// AConnect to DB
+function connecttoDB(){
 connection.on('connect', function(err) {
   if (err) {
     console.log(err);
@@ -50,11 +50,15 @@ connection.on('connect', function(err) {
     console.log("connected to DB");
   }
 });
+}
 // Inserting into DB
-function insertrow(data) {
+function connectAndInsert(data) {
+  connecttoDB();
   request = new Request("INSERT INTO dbo.ctusers (Name, Email, Job_title, Exp_year, Exp_month, Certs, College, Hometown, Manager, Int_proj, Ext_proj, Skills, Resume_url) values (@Name, @Email, @Job_title, @Exp_year, @Exp_month, @Certs, @College, @Hometown, @Manager, @Int_proj, @Ext_proj, @Skills, @Resume_url)", function(err) {
     if (err) {
-      console.log(err);
+      console.log("Could not insert");
+    }else{
+      console.log("Inserted row");
     }
   });
   request.addParameter('Name', TYPES.NVarChar, data.name);
@@ -97,7 +101,7 @@ router.get("/userslogin", function(req, res) {
 });
 
 router.get("/adminlogin", function(req, res) {
-  res.sendFile(path + "adminpage.html");
+  res.sendFile(path + "index4.html");
 });
 
 router.get("/register", function(req, res) {
@@ -118,6 +122,7 @@ app.post('/register', upload.single('customFile'), function(req, res) {
   const extproj = req.body.extproj;
   const expy = req.body.expy;
   const expm = req.body.expm;
+  const skills = req.body.skills;
   const fileup = req.file.url;
   const data = {
     email,
@@ -131,18 +136,16 @@ app.post('/register', upload.single('customFile'), function(req, res) {
     extproj,
     expy,
     expm,
+    skills,
     fileup
   };
-  console.log(req.body);
-  console.log(fileup);
-  insertrow(data);
+  connectAndInsert(data);
   res.sendFile(path + "register.html");
 });
 
 app.use("*", function(req, res) {
   res.sendFile(path + "404.html");
 });
-
 
 app.listen(3000, function() {
   console.log("Listening at port 3000");
