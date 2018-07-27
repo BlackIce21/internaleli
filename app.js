@@ -7,6 +7,8 @@ var multer = require('multer');
 var formidable = require('formidable');
 var multerAzure = require('multer-azure');
 
+var port = process.env.PORT || 1337;
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
   extended: false
@@ -147,6 +149,6 @@ app.use("*", function(req, res) {
   res.sendFile(path + "404.html");
 });
 
-app.listen(3000, function() {
-  console.log("Listening at port 3000");
+app.listen(port, function() {
+  console.log("Listening at port" + port);
 });

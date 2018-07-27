@@ -20,6 +20,7 @@
     "multer-azure-storage": "^0.2.0",
     "mysql2": "^1.5.3",
     "nodemon": "^1.18.3",
+    "powerbi-client": "^2.6.0",
     "propellerkit-select2": "^1.2.0",
     "tedious": "^2.6.3"
   }
